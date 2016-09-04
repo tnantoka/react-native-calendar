@@ -24,6 +24,7 @@ export default class Calendar extends Component {
 
   static propTypes = {
     customStyle: PropTypes.object,
+    customDayStyles: PropTypes.array,
     dayHeadings: PropTypes.array,
     eventDates: PropTypes.array,
     monthNames: PropTypes.array,
@@ -45,6 +46,7 @@ export default class Calendar extends Component {
 
   static defaultProps = {
     customStyle: {},
+    customDayStyles: [],
     dayHeadings: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
     eventDates: [],
     monthNames: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -170,7 +172,7 @@ export default class Calendar extends Component {
             isSelected={selectedMonthIsArg && (dayIndex === selectedIndex)}
             hasEvent={events && events[dayIndex] === true}
             usingEvents={this.props.eventDates.length > 0}
-            customStyle={this.props.customStyle}
+            customStyle={this.props.customDayStyles[dayIndex]}
           />
         ));
       } else {
